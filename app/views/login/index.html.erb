@@ -1,0 +1,23 @@
+
+<div class="form zentrieren">
+	<h2>Login</h2>
+	
+	<form action="/login" method="post">
+		<p>	
+			<label>Email<label><br />
+			<%= text_field_tag :email, params[:email] %>
+		</p>
+		<p>	
+			<label>Passwort<label><br />
+			<%= password_field_tag :password, params[:password] %>
+		</p>
+		<p id="notice" style="color: red"><%= notice %></p>
+	
+		<%= submit_tag 'Login'%>
+	</form>
+		<p>
+			<%= link_to 'ich bin noch nicht registriert',
+				{:controller => 'alumnis', :action => 'new'},{:title => 'Registrieren'} %>
+		</p>
+	
+</div>

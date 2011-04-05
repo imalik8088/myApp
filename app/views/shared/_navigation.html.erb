@@ -1,0 +1,17 @@
+  <ul id="Navigation">
+    <li><%= link_to "Home", :controller => "public", :action => "index" %></li>
+	<% if current_user %>
+		<li><%= link_to "Logout", "/logout" %></li>
+		<li><%= link_to "Mein Profil", :controller => "alumnis", :action => "show", 
+							:id => current_user.id %></li>
+		<li><%= link_to "Mein Jahrgang", :controller => "alumnis", :action => "get_my_graduationyear", 
+							:year => current_user.graduation_year, :school => current_user.school_id %></li>
+		<li><%= link_to "Meine Meetings", :controller => "alumnis", :action => "get_my_meetings", 
+							:year => current_user.graduation_year, :school => current_user.school_id %></li>
+	<% else %>
+		<li><%= link_to "Login", "/login" %></li>
+	<% end %>
+    
+	<li><%= link_to "Kontakt", :controller => "public", :action => "index" %></li>
+		
+  </ul>

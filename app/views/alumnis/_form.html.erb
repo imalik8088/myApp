@@ -1,0 +1,70 @@
+<%= form_for(@alumni, :html => { :multipart => true } ) do |f| %>
+  <% if @alumni.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alumni.errors.count, "error") %> prohibited this alumni from being saved:</h2>
+
+      <ul>
+      <% @alumni.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" style="float:left; margin-right: 30px">
+    <%= f.label :Vorname %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :Nachname %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :Geburtstag %><br />
+    <%= f.date_select :birthday %>
+  </div>
+  <div class="field" style="float:left; margin-right: 30px">
+    <%= f.label :Strasse %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field" style="float:left; margin-right: 30px">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field" style="float:left; margin-right: 30px">
+    <%= f.label :Land %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :Telefon %><br />
+    <%= f.text_field :phone %>
+  </div>
+   <div class="select">
+	<%= label_tag "Schule" %><br />
+    <%= select_tag 'school_id', options_for_select(@schools.collect{ 
+								|s| [(s.city.name + " - #{s.name}") , s.id] })%>
+  </div>
+    <div class="field">
+    <%= f.label :Abschlussjahr %><br />
+    <%= f.text_field :graduation_year %>
+  </div>
+  <div class="field">
+    <%= f.label :Email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field" style="float:left; margin-right: 30px"1>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="photo">
+  	<%= f.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

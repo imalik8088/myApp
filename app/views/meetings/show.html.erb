@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <h3>Treffen in <%= @meeting.city %></h3> (<%= @meeting.location %>) 
+ </p>
+
+<p>
+  <h4>Treffen vom <%= german_date(@meeting.date) %> von der <%= @meeting.school_id %></h4>
+</p>
+<p>
+  <b>Beschreibung</b><br />
+  <%= @meeting.description %>
+</p>
+
+<% if @meeting.assets %>
+	<div class="Bilder">
+		  <% for ass in @meeting.assets %>
+			<span style-="float:left">
+				<%= debug(ass.asset.path) %>
+			</span>
+		  <% end %>
+	</div>
+<% end %>
+
+
+
+<center><hr style="width:75%"></center>
+<div class="comments">
+	<% if !@meeting.comments.blank? %>
+		<h3>Kommentare</h3>
+	  <% for comment in @meeting.comments %>
+	    <%= render(:partial => "shared/comments", :locals => { :comment => comment })  %>
+	  <% end %>	  
+	<% end %>
+</div>
+<center><hr style="width:75%"></center>
+
+<div class="comment-form">
+	<% form_tag(:action => "add_comment", :id => @meeting.id) do %>
+		<%= render( :partial => "shared/comment_form" ) %><br />
+		<%= submit_tag("Kommentar hinzufügen") %>
+	<% end %>
+</div>
+<center><hr style="width:75%; margin-bottom:30px"></center>
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<p style="float: right">
+	<%= link_to(image_tag(@alumni.photo.url(:small)), @alumni.photo.url, :target => "_blank") %>
+</p>
+<p>
+  <b>Vorname:</b>
+  <%= @alumni.first_name %>, <%= @alumni.last_name %>
+</p>
+
+<p>
+  <b>Geburtstag:</b>
+  <%= @alumni.birthday %>
+</p>
+
+<p>
+  <b>Strasse:</b>
+  <%= @alumni.street %><br />
+
+  <b>Stadt:</b>
+  <%= @alumni.city %> | <%= @alumni.country %>
+</p>
+
+<p>
+  <b>Telefon:</b>
+  <%= @alumni.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @alumni.email %>
+</p>
+
+<p>
+  <b>Abschluss:</b>
+  <%= @alumni.graduation_year %> in der <%= @alumni.school.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_alumni_path(@alumni) %> |
+<%= link_to 'Back', alumnis_path %>
